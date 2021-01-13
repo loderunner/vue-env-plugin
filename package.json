@@ -1,7 +1,12 @@
 {
   "name": "vue-env-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/vue-env-plugin.umd.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loderunner/vue-env-plugin.git"
+  },
+  "homepage": "https://github.com/loderunner/vue-env-plugin",
   "engines": {
     "node": ">=0.12"
   },
