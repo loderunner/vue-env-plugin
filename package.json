@@ -1,6 +1,6 @@
 {
   "name": "vue-env-plugin",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -31,6 +31,10 @@
   "peerDependencies": {
     "vue": "2.x"
   },
+  "dependencies": {
+    "case": "^1.6.3",
+    "lodash": "^4.17.20"
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -39,7 +43,6 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
-    "case": "^1.6.3",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
     "eslint": "^6.7.2",
@@ -50,8 +53,5 @@
     "prettier": "^1.19.1",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
-  },
-  "dependencies": {
-    "lodash": "^4.17.20"
   }
 }
