@@ -1,4 +1,4 @@
-import { camel } from 'case';
+import { camel, of } from 'case';
 import _ from 'lodash';
 
 export default {
@@ -8,7 +8,12 @@ export default {
       .pickBy((_, k) => k.startsWith('VUE_APP'))
       .mapKeys((_, k) => k.substring(7))
       .value();
-    const camelCase = _.mapKeys({ ...env, ...vueAppShortcuts }, camel);
+    const camelCase = _.mapKeys({ ...env, ...vueAppShortcuts }, (_, k) => {
+      if (of(k) === 'constant') {
+        return camel(k);
+      }
+      return k;
+    });
 
     Vue.prototype.$env = {
       ...env,
