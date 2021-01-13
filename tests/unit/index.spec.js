@@ -1,4 +1,4 @@
-import { createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import { config as dotenv } from 'dotenv';
 import path from 'path';
 
@@ -11,23 +11,22 @@ describe('Vue env plugin', () => {
     const localVue = createLocalVue();
     localVue.use(VueEnvPlugin);
 
+    const Component = {
+      template: '<div>Hello World</div>'
+    };
+    const wrapper = mount(Component, { localVue });
+
     // Env var
-    expect(localVue.prototype.$env).toHaveProperty('TEST_VAR', 'Hello World');
+    expect(wrapper.vm.$env).toHaveProperty('TEST_VAR', 'Hello World');
     // Camelcase
-    expect(localVue.prototype.$env).toHaveProperty('testVar', 'Hello World');
+    expect(wrapper.vm.$env).toHaveProperty('testVar', 'Hello World');
     // Vue env var
-    expect(localVue.prototype.$env).toHaveProperty(
-      'VUE_APP_TEST_VAR_2',
-      'Hello Vue'
-    );
+    expect(wrapper.vm.$env).toHaveProperty('VUE_APP_TEST_VAR_2', 'Hello Vue');
     // Vue shortcut
-    expect(localVue.prototype.$env).toHaveProperty('TEST_VAR_2', 'Hello Vue');
+    expect(wrapper.vm.$env).toHaveProperty('TEST_VAR_2', 'Hello Vue');
     // Vue camelcase
-    expect(localVue.prototype.$env).toHaveProperty(
-      'vueAppTestVar2',
-      'Hello Vue'
-    );
+    expect(wrapper.vm.$env).toHaveProperty('vueAppTestVar2', 'Hello Vue');
     // Vue shortcut camelcase
-    expect(localVue.prototype.$env).toHaveProperty('testVar2', 'Hello Vue');
+    expect(wrapper.vm.$env).toHaveProperty('testVar2', 'Hello Vue');
   });
 });

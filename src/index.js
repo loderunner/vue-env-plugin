@@ -15,10 +15,14 @@ export default {
       return k;
     });
 
-    Vue.prototype.$env = {
-      ...env,
-      ...vueAppShortcuts,
-      ...camelCase
-    };
+    Object.defineProperty(Vue.prototype, '$env', {
+      get() {
+        return {
+          ...env,
+          ...vueAppShortcuts,
+          ...camelCase
+        };
+      }
+    });
   }
 };
